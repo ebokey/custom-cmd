@@ -80,6 +80,8 @@ bool State::sample(double period, double eventTime) {
     // Maybe I need to write something that steps TO the next sample time if that is closer to the current time than nextTime?
     // UPDATE: I don't think this is the case, can't predict this function call
 
+    // NOTE: this function seems to skip some sample points here and there, FIX IT!
+
     double blah = floor((time + EPS) / period) * period;
 
     bool isIncrement = blah == time;

@@ -6,8 +6,10 @@
 
 namespace OSK {
 
-// Constants
-const double EPS = 10 * std::numeric_limits<double>::epsilon(); // Machine epsilon
+// Define a machine epsilon constant, used to account for rounding error
+// Found that the epsilon value defined by numeric_limits wasn't enough to overcome the rounding error after enough iterations
+// Have found that multiplying it by 10 is enough for the examples tried - might need to increase for even higher iteration counts
+const double EPS = 10 * std::numeric_limits<double>::epsilon();
 
 class State {
 
