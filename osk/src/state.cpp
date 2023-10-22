@@ -43,16 +43,25 @@ void State::updateClock() {
     // If the current sim time is at a time-step boundary, initialize nextTime
     if(kpass == 0) {
         ready = 1;
-        nextTime = floor((time + EPS) / defaultTimeStep + 1) * defaultTimeStep;
+        double blah0 = time + EPS;
+        double blah1 = blah0 / defaultTimeStep;
+        double blah2 = blah1 + 1;
+        int blah3 = floor(blah2);
+        nextTime = blah3 * defaultTimeStep;
+        //nextTime = floor((time + EPS) / defaultTimeStep + 1) * defaultTimeStep;
     }
     else {
         ready = 0;  
     }
 }
 
+/*
+Sample function (Overload #1)
+    Determines if the simulation is at the start of an integrating time-step
+    TRUE if it is the start of an integrating time-step
+    FALSE if it is not at the start of an integrating time-step (e.g. it is within a time-step)
+*/
 bool State::sample() {
-    // Returns TRUE if it is the start of an integrating time-step
-
     if(ready) {
         return 1;
     }
@@ -61,12 +70,21 @@ bool State::sample() {
     }
 }
 
+/*
+Sample function (Overload #2)
+    Returns TRUE if BOTH of the following conditions are met:
+    (1) Time is at the beginning of an integrating time-step
+    (2) Time is an even increment of the input period
+*/
 bool State::sample(double period, double eventTime) {
-    // returns TRUE if it is the beginning of the integrating time-step and the time is an even incrememt of period
-
     // Maybe I need to write something that steps TO the next sample time if that is closer to the current time than nextTime?
+    // UPDATE: I don't think this is the case, can't predict this function call
 
-    if(ready) { // Need other conditional
+    double blah = floor((time + EPS) / period) * period;
+
+    bool isIncrement = blah == time;
+
+    if(ready && isIncrement) { // Need other conditional
         return 1;
     }
     else {

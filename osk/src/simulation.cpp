@@ -52,13 +52,12 @@ void Simulation::run() {
             for(j=0; j < numModels; j++) {
                 currentStage[j]->update();
 
-                // Propogate the states, and update the clock? Does this go outside of this FOR loop?
-                currentStage[j]->states[0]->propogate();
-                //currentStage[j]->states[0]->updateClock();
+                // Propogate the states
+                for(int k=0; k <currentStage[j]->states.size(); k++) {
+                    currentStage[j]->states[k]->propogate();
+                }
 
-                currentStage[j]->states[1]->propogate();
-                //currentStage[j]->states[1]->updateClock();
-
+                // Update clock
                 State::updateClock();
             }
 

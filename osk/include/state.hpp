@@ -7,7 +7,7 @@
 namespace OSK {
 
 // Constants
-const double EPS = std::numeric_limits<double>::epsilon(); // Machine epsilon
+const double EPS = 10 * std::numeric_limits<double>::epsilon(); // Machine epsilon
 
 class State {
 
@@ -35,8 +35,8 @@ public:
     static int kpass; // Number of evaluations within a time-step; 0 at time-step boundaries
     static bool ready; // Indicates if the simulation is at a time-step boundary; TRUE if at boundary
 
-    static bool tickFirst;
-    static bool tickLast;
+    static bool tickFirst; // TRUE if it is the first time the model is called
+    static bool tickLast; // TRUE if the simulation as a whole is terminated for any reason
 
     // Members for formulas within time-steps
     double x0, xd0, xd1;

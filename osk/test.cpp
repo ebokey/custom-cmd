@@ -10,13 +10,25 @@
 //double OSK::State::nextTime = 0.1;
 
 int main() {
-    /*
+    
     // Testing out the machine epsilon
     const double EPS = std::numeric_limits<double>::epsilon();
 
-    std::cout << "Machine epsilon is: " << EPS << std::endl;
-    */
+    std::cout << "Stored machine epsilon is: " << EPS << std::endl;
 
+    double prev_EPS;
+    double calc_EPS;
+
+    while((1+calc_EPS) != 1) {
+        prev_EPS = calc_EPS;
+
+        calc_EPS /= 2;
+    }
+
+    std::cout << "Calculated machine epsilon is: " << calc_EPS << std::endl;
+    
+
+    /*
     // Testing out constructor overloading
     double x = 1;
     double xd = 0.5;
@@ -32,4 +44,5 @@ int main() {
 
     // Message to indicate the code is still building properly
     std::cout << "\nThe test code is still building properly!\n" << std::endl;
+    */
 }

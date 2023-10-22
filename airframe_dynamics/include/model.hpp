@@ -1,4 +1,4 @@
-#include "../osk/include/block.hpp"
+#include "../../osk/include/block.hpp"
 using namespace OSK;
 
 class Model : public Block {
