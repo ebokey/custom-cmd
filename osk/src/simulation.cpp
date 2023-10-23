@@ -93,9 +93,14 @@ void runIteration(std::vector<Block*> &currentStage) {
         for(int j=0; j < currentStage[i]->states.size(); j++) {
             currentStage[i]->states[j]->propogate();
         }
+    }
 
-        // Update clock
-        State::updateClock();
+    // Update clock
+    State::updateClock();
+
+    // Check if simulation is being terminated
+    if(Simulation::stop < 0) {
+        State::tickLast = 1;
     }
 
     // Report each model
