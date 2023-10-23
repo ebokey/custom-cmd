@@ -23,7 +23,7 @@ void Missile::update() {
 }
 
 void Missile::report() {
-    if(State::sample(0.1) || State::tickFirst || State::tickLast) {
+    if(State::sample(1.0) || State::tickFirst || State::tickLast) {
         printf("%12s %8.3f %8.3f %8.3f %8.3f\n", "Missile", State::time, x, y, d);
     }
 }

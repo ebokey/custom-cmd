@@ -13,7 +13,7 @@ Target::Target(double x, double y, double vx, double vy) {
 
 void Target::report() {
 
-    if(State::sample(0.1) || State::tickFirst || State::tickLast) {
+    if(State::sample(1.0) || State::tickFirst || State::tickLast) {
         printf("%12s %8.3f %8.3f %8.3f\n", "Target", State::time, x, y);
     }
 }

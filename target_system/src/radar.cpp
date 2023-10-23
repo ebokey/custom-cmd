@@ -26,7 +26,7 @@ void Radar::update() {
 }
 
 void Radar::report() {
-    if(State::sample(0.1) || State::tickFirst || State::tickLast) {
+    if(State::sample(1.0) || State::tickFirst || State::tickLast) {
         printf("%12s %8.3f %8.3f\n", "Radar", State::time, theta_err * R);
         printf("\n");
     }

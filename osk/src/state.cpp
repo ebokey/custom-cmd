@@ -84,7 +84,7 @@ bool State::sample(double period, double eventTime) {
 
     double blah = floor((time + EPS) / period) * period;
 
-    bool isIncrement = blah == time;
+    bool isIncrement = blah > time - EPS && blah < time + EPS;
 
     if(ready && isIncrement) { // Need other conditional
         return 1;
