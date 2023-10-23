@@ -1,3 +1,6 @@
+#ifndef TARGET
+#define TARGET
+
 #include "../../osk/include/block.hpp"
 using namespace OSK;
 
@@ -9,3 +12,5 @@ public:
 
     double x, y, vx, vy;
 };
+
+#endif

@@ -2,7 +2,7 @@
 #define STATE
 
 #include<limits>
-#include<cmath>
+#include<math.h>
 
 namespace OSK {
 
